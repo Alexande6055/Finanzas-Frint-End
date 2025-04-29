@@ -9,35 +9,19 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
 
-  interface PersonData {
-    personId: number;
-    identificationType: string;
-    dni: string;
-    name: string;
-    lastName: string;
-    DateOfBirth: string;
-    addres: string;
-    phoneNumber: string;
-    profileFotoUrl: string;
-  }
-
-  interface CustomTokenPayload {
-    userId: number;
-    firebaseUid: string;
-    email: string;
-    personId: PersonData;
-  }
 
 
   const navigate = useNavigate();
 
   const login = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setError(''); // Limpia el error anterior antes de intentar logear
+
     let resToken: string | null = null;// Aquí puedes usar let porque luego asignarás el valor
 
     if (email == '' || password == '') {
       toast.error("Complete all required fields");
-
+      setError("Complete all required fields"); // Aquí actualizas el estado de error
     } else {
       //consumo el servicio de firebase para logearme y obtener el token
       resToken = await FirebaseAuthService.loginAndGetToken(email, password);
@@ -64,6 +48,8 @@ const Login: React.FC = () => {
         navigate("/dashboard");
       } else {
         toast.error("Incorrect username or password ");
+        setError("Incorrect username or password"); // Aquí también
+
       }
     }
   }

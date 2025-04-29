@@ -1,4 +1,4 @@
-import React, {
+import {
   createContext,
   useContext,
   useState,
@@ -93,7 +93,7 @@ useEffect(() => {
   const fetchGoals = async () => {
     if (goals.length === 0 && contributions.length === 0) {
       try {
-        const response = await ApiService.search("user", '3');
+        const response = await ApiService.search("user");
     console.log(response)
 
 

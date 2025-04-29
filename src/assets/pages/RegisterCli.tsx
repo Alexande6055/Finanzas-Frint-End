@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import CameraPreview from "../components/CameraPreview";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Toaster, toast } from "sonner";
 import ApiService from "../service/ApiService";
 import FirebaseAuthService from "../../util/firebasetoken";
@@ -12,7 +11,6 @@ const RegisterCli: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [showCamera, setShowCamera] = useState(false);
-  const auth = getAuth();
 
   const [form, setForm] = useState({
     identificationType: "DNI",

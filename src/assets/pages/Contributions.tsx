@@ -10,7 +10,7 @@ const Contributions: React.FC = () => {
     label: string;
   }
 
-  const { goals, contributions, addContribution } = useGoals();
+  const { contributions } = useGoals();
   const [selNuevaOpcion, setSelNuevaOpcion] = useState<OptionType | null>(null);
 
 

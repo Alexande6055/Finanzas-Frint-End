@@ -45,9 +45,11 @@ const Goals: React.FC = () => {
   };
 
   const saveGoal = async () => {
+    setError(''); // Limpiar errores anteriores
     if (form.category==''||form.description==''||form.end_date==''||form.goal_name==''
       ||form.start_date==''||form.target_amount==0  ) {
             toast.error("Complete all required fields");
+            setError("Complete all required fields"); // Actualizar error en pantalla
     }else{
     const id = getId();
     const dataToSend = {
@@ -58,10 +60,26 @@ const Goals: React.FC = () => {
   
     try {
       const response = await ApiService.save("savings-goal", dataToSend);
-      console.log("Meta guardada:", response);
       toast.success("Meta guardada exitosamente");
+      addGoal({
+        name: response.goal_name, // Usa las propiedades correctas basadas en tu respuesta
+        category: response.category,
+        target: response.target_amount,
+        deadline: response.end_date,
+      });
+      setForm({
+        goal_name: '',
+        category: '',
+        description: '',
+        target_amount: 0,
+        start_date: '',
+        end_date: '',
+        personId: 0,
+      }); // Resetea el formulario
+
     } catch (error) {
-      console.error("Error al guardar la meta:", error);
+      toast.error("An unexpected error occurred");
+      setError("An unexpected error occurred"); // Maneja el error en la UI también
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef} from 'react';
 
 interface CameraPreviewProps {
   onCapture: (imageData: string) => void;
@@ -8,7 +8,7 @@ interface CameraPreviewProps {
 const CameraPreview: React.FC<CameraPreviewProps> = ({ onCapture, className }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [streaming, setStreaming] = useState(false);
+//  const [streaming, setStreaming] = useState(false);
 
   useEffect(() => {
     const startCamera = async () => {
@@ -16,7 +16,7 @@ const CameraPreview: React.FC<CameraPreviewProps> = ({ onCapture, className }) =
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
-          setStreaming(true);
+//          setStreaming(true);
         }
       } catch (error) {
         console.error('Error accessing camera:', error);

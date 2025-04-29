@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import GoalCard from '../components/GoalCard';
 import GoalProgress from '../components/GoalProgress';
 import Suggestions from '../components/Suggestions';
 import AddContribution from '../components/AddContribution';
@@ -11,7 +10,7 @@ import ApiService from "../service/ApiService";
 
 
 const Dashboard: React.FC = () => {
-  const { goals, contributions, getGoalContributions } = useGoals();
+  const { contributions } = useGoals();
 
   interface Meta {
     goal_id: number;
