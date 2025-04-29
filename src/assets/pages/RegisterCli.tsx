@@ -97,7 +97,7 @@ const RegisterCli: React.FC = () => {
         user: true,
         personData: response
       }));
-
+//se agrego el local stopre
       navigate("/dashboard");
     }
   };
