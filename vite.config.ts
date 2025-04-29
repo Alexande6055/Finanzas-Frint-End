@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     host: '0.0.0.0',
-    port: 8080 // opcional, pero recomendable para empatar con fly.toml
+    port: 8080 
+  },
+  build: {
+    outDir: 'dist' // Aquí lo defines explícitamente
   }
 })
