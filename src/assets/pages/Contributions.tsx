@@ -15,7 +15,7 @@ const Contributions: React.FC = () => {
 
 
   const [form, setForm] = useState({
-    goalId: '',
+    goalId: 0,
     contributionType: "goal",
     amount: 0,
   });
@@ -46,7 +46,7 @@ const Contributions: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await save(); // llama a save directamente
-    setForm({ goalId: '', amount: 0, contributionType: "goal" });
+    setForm({ goalId: 0, amount: 0, contributionType: "goal" });
     setSelNuevaOpcion(null); // Limpia el Select también
   };
   
@@ -55,7 +55,7 @@ const Contributions: React.FC = () => {
       setSelNuevaOpcion(val);
       setForm({
         ...form,
-        goalId: val.value.toString(),
+        goalId: val.value,
       });
     }
   };

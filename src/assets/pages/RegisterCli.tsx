@@ -92,6 +92,12 @@ const RegisterCli: React.FC = () => {
           personData: response,
         })
       );
+
+      localStorage.setItem("user", JSON.stringify({
+        user: true,
+        personData: response
+      }));
+
       navigate("/dashboard");
     }
   };
